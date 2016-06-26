@@ -1,0 +1,58 @@
+<div class="row justified-row motto">
+</div>
+<div id='visitorCountBg' class="row justified-row-container">
+  <div id='visitorCount'>
+    <div id='totalCount'>
+      <div id='totalVisitors' data-count-total='<%= @visitor_count %>'></div>
+      <div class='visitor-label'>Total Visitors</div>
+    </div>
+    <div id='uniqueCount'>
+      <div id='uniqueVisitors' data-count-unique='<%= @unique_visitor_count %>'></div>
+      <div class='visitor-label'>Unique Visitors</div>
+    </div>
+  </div>
+</div>
+<div class="row feature-section">
+  <div class="col-lg-1">
+  </div>
+  <div class="col-lg-5">
+    <h3 class="subheader homepage-heading">Features</h3>
+    <ul class='homepage-content'>
+      <li>
+        Track few or all user actions, (not just activerecord cruds!)
+      </li>
+      <li>
+        Track outgoing links
+      </li>
+      <li>
+        Your data goes to your application database, so no security concerns!
+      </li>
+      <li>
+        Download report for user actions (<%= link_to 'Download report', audit_rails.analytics_audits_url(commit: "Download Filtered Report") %>) or
+      </li>
+      <li>
+        See user actions in <%= link_to 'Cool Analytics', audit_rails.analytics_audits_url %>!
+      </li>
+    </ul>
+  </div>
+  <div class="col-lg-1">
+  </div>
+  <div class="col-lg-5">
+    <h3 class="subheader homepage-heading">Explore in 3 easy steps!</h3>
+    <ol class='homepage-content'>
+      <li>
+        <% unless @current_user %>
+          <%= render partial: 'user_selection' %>
+        <% else %>
+          <%= 'Already logged in! Move to Step#2 & Step#3' if @current_user %>
+        <% end %>
+      </li>
+      <li>
+        Perform CRUD operations &nbsp; (optional)
+      </li>
+      <li>
+        Explore <%= link_to 'Cool Analytics', audit_rails.analytics_audits_url %>!
+      </li>
+    </ul>
+  </div>
+</div>

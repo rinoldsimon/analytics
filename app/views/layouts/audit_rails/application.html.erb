@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Analytics</title>
+    <%= stylesheet_link_tag    "audit_rails/application", :media => "all" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top header-container" role="navigation">
+      <div class='container'>
+        <%# render 'layouts/brand' %>
+        <div class="navbar-collapse collapse navbar-bottom">
+          <ul class="nav navbar-nav">
+            <li>
+              <%= link_to 'Home', '/' %>
+            </li>
+            <li class="<%= active_class('analytics')%>">
+              <%= link_to 'Analytics', analytics_audits_path %>
+            </li>
+            <li><%= link_to 'About', main_app.about_url %></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+        <%# render 'layouts/fork_me' %>
+      </div>
+    </div>
+    <%= yield %>
+    <%= render 'layouts/footer' %>
+    <%= javascript_include_tag "audit_rails/application" %>
+  </body>
+</html>

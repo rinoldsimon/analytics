@@ -1,0 +1,5 @@
+<%= form_for(@user, :url => login_path) do |f| %>
+  Select a user: <%= f.select :name, @users%>
+  <%= f.submit "Go", class: "button round small" %>
+  &nbsp; (optional)
+<% end %>

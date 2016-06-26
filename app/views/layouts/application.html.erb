@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="description" content='Generates analytics for your Rails application' />
+    <meta name="ROBOTS" content="INDEX, FOLLOW">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= content_for?(:title) ? yield(:title) : "Analytics" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top header-container" role="navigation">
+      <div class='container'>
+        <div class="navbar-collapse collapse navbar-bottom">
+          <ul class="nav navbar-nav">
+            <li class="<%= selected('home', 'index') %>">
+              <%= link_to 'Home', '/' %>
+            </li>
+            <li>
+              <%= link_to 'Analytics', audit_rails.analytics_audits_url %>
+            </li>
+            <li class="<%= selected('home','about') %>"><%= link_to 'About', about_url %></li>
+            <%= render partial: 'layouts/current_user_tabs' if @current_user %>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    <div class='container content'>
+      <%= yield %>
+    </div>
+    <%= render 'layouts/footer' %>
+    <%= javascript_include_tag "application" %>
+  </body>
+</html>
